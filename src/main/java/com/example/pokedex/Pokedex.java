@@ -2,7 +2,8 @@ package com.example.pokedex;
 
 
 import com.example.pokedex.controllers.PokemonEntryController;
-import com.example.pokedex.models.PokemonEntry;
+import com.example.pokedex.models.PokemonEntryModel;
+import com.example.pokedex.services.PokemonEntryFetch;
 import com.example.pokedex.services.PokemonEntryHTTP;
 import com.example.pokedex.views.PokemonEntryView;
 
@@ -14,11 +15,13 @@ public class Pokedex {
         if (args.length > 0) {
             System.out.println("Vous avez fourni l'argument " + args[0]);
 
-            PokemonEntry pokemonEntry = PokemonEntryController
-                    .JSONParse(PokemonEntryHTTP
-                            .getJSONPokemon(Integer.parseInt(args[0])));
 
-            PokemonEntryView.Display(pokemonEntry);
+            PokemonEntryHTTP pokemonEntryHTTP = new PokemonEntryHTTP();
+            PokemonEntryController pokemonEntryController = new PokemonEntryController(pokemonEntryHTTP);
+            PokemonEntryModel pokemonEntryModel = pokemonEntryController.getPokemonEntryById(Long.valueOf(args[0]));
+
+
+            PokemonEntryView.Display(pokemonEntryModel);
         }
 
 

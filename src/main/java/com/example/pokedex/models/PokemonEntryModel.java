@@ -1,20 +1,20 @@
 package com.example.pokedex.models;
 
-public class PokemonEntry {
+public class PokemonEntryModel {
 
     private Long id;
     private String Name;
     private Long Height;
     Long Weight;
 
-    public PokemonEntry() {
+    public PokemonEntryModel() {
     }
 
-    public PokemonEntry(PokemonEntry pokemonEntry) {
-        this.id= pokemonEntry.getId();
-        this.Name=pokemonEntry.getName();
-        this.Weight=pokemonEntry.getWeight();
-        this.Height=pokemonEntry.getHeight();
+    public PokemonEntryModel(PokemonEntryModel pokemonEntryModel) {
+        this.id= pokemonEntryModel.getId();
+        this.Name= pokemonEntryModel.getName();
+        this.Weight= pokemonEntryModel.getWeight();
+        this.Height= pokemonEntryModel.getHeight();
     }
 
     public Long getId() {

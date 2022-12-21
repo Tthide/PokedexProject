@@ -8,16 +8,16 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
-public class PokemonEntryHTTP {
+public class PokemonEntryHTTP implements PokemonEntryFetch{
     public PokemonEntryHTTP() {
     }
 
-    public static String getJSONPokemon(int id) {
+    public String getPokemonEntry(Long id) {
         String jsonResponse = "";
         try {
 
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-            HttpGet request = new HttpGet("https://pokeapi.co/api/v2/pokemon/" + Integer.toString(id));
+            HttpGet request = new HttpGet("https://pokeapi.co/api/v2/pokemon/" + Long.toString(id));
             request.addHeader("content-type", "application/json");
             HttpResponse result = httpClient.execute(request);
             jsonResponse = EntityUtils.toString(result.getEntity(), "UTF-8");
