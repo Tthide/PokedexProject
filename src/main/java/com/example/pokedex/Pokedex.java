@@ -1,6 +1,11 @@
 package com.example.pokedex;
 
 
+import com.example.pokedex.controllers.PokemonEntryController;
+import com.example.pokedex.models.PokemonEntry;
+import com.example.pokedex.services.PokemonEntryHTTP;
+import com.example.pokedex.views.PokemonEntryView;
+
 public class Pokedex {
 
     public static void main(String[] args) {
@@ -8,9 +13,15 @@ public class Pokedex {
         System.out.println("It's working !");
         if (args.length > 0) {
             System.out.println("Vous avez fourni l'argument " + args[0]);
+
+            PokemonEntry pokemonEntry = PokemonEntryController
+                    .JSONParse(PokemonEntryHTTP
+                            .getJSONPokemon(Integer.parseInt(args[0])));
+
+            PokemonEntryView.Display(pokemonEntry);
         }
-        SQLLiteExample.run();
-        HTTPRequestExample.run();
+
+
     }
 
     public String getName() {
