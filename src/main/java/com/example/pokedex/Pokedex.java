@@ -7,8 +7,11 @@ import com.example.pokedex.models.PokemonEntryModelLocal;
 import com.example.pokedex.services.PokemonEntryFetch;
 import com.example.pokedex.services.PokemonEntryHTTP;
 import com.example.pokedex.services.PokemonEntrySQL;
+import com.example.pokedex.utilities.ConsoleLogUtility;
+import com.example.pokedex.utilities.FileLogUtility;
 import com.example.pokedex.views.PokemonEntryView;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 
 public class Pokedex {
@@ -39,9 +42,19 @@ public class Pokedex {
                 pokemonEntryModel = pokemonEntryController.getPokemonEntryById(Long.valueOf(args[0])); //first method
             }
 
+            ////////////////////////////////////////////////////////// Displaying and writing the entry
+            PokemonEntryView pokemonEntryView = new PokemonEntryView((PokemonEntryModel) pokemonEntryModel);
+
+            //pokemonEntryView.Display(); // part1 way of displaying result
 
 
-            PokemonEntryView.Display((PokemonEntryModel) pokemonEntryModel);
+            ConsoleLogUtility.logTextToConsole(pokemonEntryView);// part 3 way of displaying result in terminal
+
+            try { // writing HTML log in current file
+                FileLogUtility.logHtmlToFile("C:\\Users\\franc\\Desktop\\cours\\EMSE_2A\\TB3\\Good_practice\\PokedexProject",pokemonEntryView);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
 
         }
