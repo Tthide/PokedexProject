@@ -50,7 +50,7 @@ public class PokemonEntryModel {
     }
 
 
-    public String toString() {
+    public String toString() { // follows the format that we need to display in terminal
         return
                 "Pokémon # " + id +
                 "\nNom : " + Name +

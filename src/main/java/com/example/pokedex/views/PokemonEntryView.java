@@ -25,15 +25,16 @@ public class PokemonEntryView implements HTMLGeneratorInterface , TextGeneratorI
         this.text = text;
     }
 
+    ////////////////////////////////////////////////////////// OUTDATED
     public void Display(){ // part1 way of displaying entries
 
         System.out.println("=============================");
         System.out.println(this.text);
         System.out.println("=============================");
     }
-
+    ////////////////////////////////////////////////////
     @Override
-    public String generateHtml() {
+    public String generateHtml() { // Converting the entry to an HTML string
         String[] lines = text.split("\\n");
         String Html ="<h1>" + pokemonEntryModel.getName()+"</h1>\n"
                 + "<ul>\n"
@@ -47,7 +48,7 @@ public class PokemonEntryView implements HTMLGeneratorInterface , TextGeneratorI
     }
 
     @Override
-    public String generateText() {
+    public String generateText() { // Creating the string that will be displayed in the terminal
         String line="=============================\n";
         return line + this.text +"\n" + line;
     }

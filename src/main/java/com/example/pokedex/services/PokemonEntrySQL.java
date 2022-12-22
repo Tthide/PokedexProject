@@ -19,8 +19,8 @@ public class PokemonEntrySQL implements PokemonEntryFetch{
             System.out.println("Connection to SQLite has been established.");
 
             PreparedStatement stmt  = conn.prepareStatement("SELECT * FROM pokemons WHERE id = ?");
-            stmt.setInt(1, Math.toIntExact(id)); // Sets the value "3" for parameter at position 1
-            rs    = stmt.executeQuery();
+            stmt.setInt(1, Math.toIntExact(id)); // We want the item whose id is put as an argument of the method
+            rs= stmt.executeQuery();
             rs.next();
 
         } catch (SQLException e) {

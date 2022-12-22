@@ -17,10 +17,10 @@ public class PokemonEntryHTTP implements PokemonEntryFetch{
         try {
 
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-            HttpGet request = new HttpGet("https://pokeapi.co/api/v2/pokemon/" + Long.toString(id));
+            HttpGet request = new HttpGet("https://pokeapi.co/api/v2/pokemon/" + id); // send request to API
             request.addHeader("content-type", "application/json");
             HttpResponse result = httpClient.execute(request);
-            jsonResponse = EntityUtils.toString(result.getEntity(), "UTF-8");
+            jsonResponse = EntityUtils.toString(result.getEntity(), "UTF-8"); // convert JSON to string
 
         } catch (IOException e) {
             e.printStackTrace();

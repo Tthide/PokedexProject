@@ -27,16 +27,16 @@ public class PokemonEntryController {
     public PokemonEntryModel getPokemonEntryById(Long id) {
 
 
-        PokemonEntryModel pokemonEntryModel = new PokemonEntryModel();
+        PokemonEntryModel pokemonEntryModel = new PokemonEntryModel(); // creating a new instance
 
         try {
             JSONParser parser = new JSONParser();
             Object resultObject = parser.parse(this.pokemonEntryFetch.getPokemonEntry(id));
 
-            if (resultObject instanceof JSONObject) {
-                JSONObject obj =(JSONObject)resultObject;
+            if (resultObject instanceof JSONObject obj) {
                 int i = obj.size();
 
+                // These item exist in any case as PokemonEntryModelLocal is a child of PokemonEntryModel
                 pokemonEntryModel.setName(obj.get("name").toString());
                 pokemonEntryModel.setId((Long) obj.get("id"));
                 pokemonEntryModel.setHeight((Long) obj.get("height"));
@@ -44,6 +44,7 @@ public class PokemonEntryController {
 
 
                 if (i==5){// for local or second method
+                    // here we change the class as we add a new item
                     pokemonEntryModel = new PokemonEntryModelLocal(pokemonEntryModel,obj.get("description").toString());
                 }
 

@@ -16,11 +16,11 @@ import java.lang.reflect.Type;
 
 public class Pokedex {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Java version " + System.getProperty("java.version"));
         System.out.println("It's working !");
         PokemonEntryHTTP pokemonEntryHTTP = new PokemonEntryHTTP();
-
+        String currentFolder = new java.io.File(".").getCanonicalPath(); //gets current directory
 
         PokemonEntryController pokemonEntryController = new PokemonEntryController(pokemonEntryHTTP); //by default we go with the first method
         PokemonEntryModel pokemonEntryModel = new PokemonEntryModel();
@@ -43,19 +43,18 @@ public class Pokedex {
             }
 
             ////////////////////////////////////////////////////////// Displaying and writing the entry
-            PokemonEntryView pokemonEntryView = new PokemonEntryView((PokemonEntryModel) pokemonEntryModel);
+            PokemonEntryView pokemonEntryView = new PokemonEntryView(pokemonEntryModel);
 
-            //pokemonEntryView.Display(); // part1 way of displaying result
+            //pokemonEntryView.Display(); // part1 way of displaying result OUTDATED
 
 
             ConsoleLogUtility.logTextToConsole(pokemonEntryView);// part 3 way of displaying result in terminal
 
             try { // writing HTML log in current file
-                FileLogUtility.logHtmlToFile("C:\\Users\\franc\\Desktop\\cours\\EMSE_2A\\TB3\\Good_practice\\PokedexProject",pokemonEntryView);
+                FileLogUtility.logHtmlToFile(currentFolder,pokemonEntryView); // write the entry in html in the project folder
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
 
         }
 

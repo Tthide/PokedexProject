@@ -27,8 +27,7 @@ public class HTTPRequestExample {
 
             JSONParser parser = new JSONParser();
             Object resultObject = parser.parse(jsonResponse);
-            if (resultObject instanceof JSONObject) {
-                JSONObject obj =(JSONObject)resultObject;
+            if (resultObject instanceof JSONObject obj) {
                 System.out.println("Pokémon name " + obj.get("name"));
                 System.out.println("Pokémon description : weight (" +
                         obj.get("weight") +

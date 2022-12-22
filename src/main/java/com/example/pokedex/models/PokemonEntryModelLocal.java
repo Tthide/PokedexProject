@@ -1,7 +1,7 @@
 package com.example.pokedex.models;
 
 public class PokemonEntryModelLocal extends PokemonEntryModel{
-
+// we added a description item to the entry
     private String Description;
 
     public PokemonEntryModelLocal() {
@@ -20,8 +20,6 @@ public class PokemonEntryModelLocal extends PokemonEntryModel{
         this.Description = pokemonEntryModelLocal.getDescription();
     }
 
-
-
     public String getDescription() {
         return Description;
     }
@@ -31,7 +29,7 @@ public class PokemonEntryModelLocal extends PokemonEntryModel{
     }
 
     @Override
-    public String toString() {
+    public String toString() { // just adding the description
         return super.toString() + "\nDescription : " + Description;
 
 
