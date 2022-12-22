@@ -31,7 +31,7 @@ public class Pokedex {
 
             if (args.length > 1) { // for second method
 
-                PokemonEntrySQL pokemonEntrySQL = new PokemonEntrySQL();
+                PokemonEntrySQL pokemonEntrySQL = new PokemonEntrySQL(args[1]);
                 pokemonEntryController.setPokemonEntryFetch(pokemonEntrySQL);
                 pokemonEntryModel = new PokemonEntryModelLocal((PokemonEntryModelLocal) pokemonEntryController.getPokemonEntryById(Long.valueOf(args[0])));
 

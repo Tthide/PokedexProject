@@ -4,8 +4,13 @@ import java.sql.*;
 
 public class PokemonEntrySQL implements PokemonEntryFetch{
 
-    public PokemonEntrySQL() {
+    private String dbUrl;
+
+    public PokemonEntrySQL(String dbUrl) {
+        this.dbUrl=dbUrl;
     }
+
+
 
     public String getPokemonEntry(Long id)  {
         /* Connect to the database */
@@ -13,7 +18,7 @@ public class PokemonEntrySQL implements PokemonEntryFetch{
         ResultSet rs = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:ressources/pokemondatabase.sqlite";
+            String url = "jdbc:sqlite:" + dbUrl;
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             System.out.println("Connection to SQLite has been established.");
