@@ -5,7 +5,7 @@ public class PokemonEntryModel {
     private Long id;
     private String Name;
     private Long Height;
-    Long Weight;
+    private Long Weight;
 
     public PokemonEntryModel() {
     }
@@ -50,6 +50,12 @@ public class PokemonEntryModel {
     }
 
 
+    public String toString() {
+        return
+                "Pokémon # " + id +
+                "\nNom : " + Name +
+                "\nTaille : " + Height +
+                "\nPoids : " + Weight ;
 
-
+    }
 }
